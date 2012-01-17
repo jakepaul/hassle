@@ -8,7 +8,7 @@ begin
         require 'sass'
         require 'sass/plugin'
 
-        if (defined?(Rails.env) ? Rails.env.production? : "production" == RAILS_ENV)
+        if Rails.env.production? || Rails.env.staging?
           if defined?(Rails.configuration) && defined?(Rails.configuration.middleware)
             Rails.configuration.middleware.use(Hassle)
           elsif defined?(ActionController::Dispatcher) && defined?(ActionController::Dispatcher.middleware)
